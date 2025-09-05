@@ -77,7 +77,7 @@ const ProfileClientPage = () => {
 
             </div>
 
-            <div>
+            <div className="DonnerProfile">
 
                 <Figure>
 
@@ -90,10 +90,6 @@ const ProfileClientPage = () => {
 
                 </Figure>
 
-            </div>
-
-            <div>
-
                 <ListGroup className="list-group-flush">
 
                     <ListGroup.Item>{nom}</ListGroup.Item>
@@ -105,6 +101,7 @@ const ProfileClientPage = () => {
                 </ListGroup>
 
             </div>
+
         </>
 
     )

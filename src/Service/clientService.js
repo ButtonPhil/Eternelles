@@ -28,7 +28,7 @@ export const clientList = () => API.get('/client', {
 
 });
 
-export const getProfileClient = (id) => API.get('/profile/:idClient', {
+export const getProfileClient = (id) => API.get(`/profile/${id}`, {
 
     headers: {
 

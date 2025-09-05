@@ -260,7 +260,7 @@ const ProfilePage = () => {
                     <div className="relative flex items-center gap-2">
                         <Tooltip content="Fiche Client">
                             <span
-                                className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                                className="text-xs p-1 rounded-md hover:bg-default-100 text-default-400 cursor-pointer active:opacity-50"
                                 onClick={() => handleFicheClient(client.idClient)}
                             >
                                 <EyeIcon />
@@ -268,7 +268,7 @@ const ProfilePage = () => {
                         </Tooltip>
                         <Tooltip color="danger" content="Supprimer Client">
                             <span
-                                className="text-lg text-danger cursor-pointer active:opacity-50"
+                                className="text-xs p-1 rounded-md hover:bg-danger-100 text-danger cursor-pointer active:opacity-50"
                                 onClick={() => handleDelete(client.idClient)}
                             >
                                 <DeleteIcon />
@@ -305,7 +305,7 @@ const ProfilePage = () => {
 
             </div>
 
-            <div>
+            <div className="DonnerProfile">
 
                 <Figure>
 
@@ -317,10 +317,6 @@ const ProfilePage = () => {
                     />
 
                 </Figure>
-
-            </div>
-
-            <div>
 
                 <ListGroup className="list-group-flush">
 
@@ -335,7 +331,7 @@ const ProfilePage = () => {
             </div>
 
             {admin && (
-                <div className="mt-4">
+                <div className="TableauClient">
                     <Table aria-label="Liste des utilisateurs">
                         <TableHeader columns={columns}>
                             {(column) => (

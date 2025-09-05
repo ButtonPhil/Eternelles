@@ -3,7 +3,6 @@ import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import { checkToken } from '../Service/AuthenService.js';
 import ModalLogin from './ModalLogin.jsx';
@@ -44,56 +43,9 @@ const NavBar = () => {
     }, [window.location.pathname]);
 
     return <>
-        {/* <Navbar expand="lg" className="bg-body-tertiary">
-            <Container>
-                <div className='d-flex'>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <img className='logo' src="src\assets\logo.png" alt="" />
-                            <Nav.Link onClick={() => { navigate('/Eternelles') }}>Acceuil</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </div>
-                <div className='d-flex'>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link onClick={() => { navigate('/Galerie') }}>Galerie</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </div>
-
-                <div>
-                    <Nav>
-                        {isLoggedIn ? (
-                            <>
-                                <Button variant="outline-primary" onClick={() => navigate('/profile')}>
-                                    Profile
-                                </Button>
-                                <Button className='ms-3' variant="outline-danger" onClick={() => {
-                                    localStorage.removeItem("token");
-                                    setIsLoggedIn(false);
-                                }}>
-                                    Déconnexion
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                                <Nav.Link onClick={handleInscription}>Inscription</Nav.Link>
-                                <Nav.Link onClick={handleLogin}>Login</Nav.Link>
-                            </>
-                        )}
-                    </Nav>
-                    <ModalInscription show={openModalInscription} onHide={handleCloseModalInscription} />
-                    <ModalLogin show={openModalLogin} onHide={handleCloseModalLogin} />
-
-                </div>
-            </Container >
-        </Navbar > */}
 
 
-        <Navbar expand="lg" className="bg-transparent" style={{ maxWidth: "1200px", margin: "0 auto", borderBottom: "1px solid #dee2e6" }}>
+        <Navbar expand="lg" className="bg-transparent" style={{ maxWidth: "1200px", margin: "0 auto", borderBottom: "1px solid #3F3F3F" }}>
             <Container fluid>
                 <div className="d-flex justify-content-between align-items-center w-100">
                     {/* Logo et lien Accueil */}
@@ -112,13 +64,25 @@ const NavBar = () => {
                         <Nav>
                             {isLoggedIn ? (
                                 <>
-                                    <Button variant="outline-primary" onClick={() => navigate('/profile')} className="me-2">
+                                    <Button variant="outline-primary" onClick={() => navigate('/profile')} className="me-2"
+                                        style={{
+                                            borderColor: "#D8C48C ",
+                                            color: "#D8C48C ",
+                                            backgroundColor: "transparent"
+                                        }}
+                                        >
                                         Profile
                                     </Button>
                                     <Button variant="outline-danger" onClick={() => {
                                         localStorage.removeItem("token");
                                         setIsLoggedIn(false);
-                                    }}>
+                                    }}
+                                        style={{
+                                            borderColor: "#3F3F3F",
+                                            color: "#3F3F3F",
+                                            backgroundColor: "transparent"
+                                        }}
+                                    >
                                         Déconnexion
                                     </Button>
                                 </>

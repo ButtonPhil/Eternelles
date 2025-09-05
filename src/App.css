@@ -4,13 +4,17 @@
 
     margin: 0;
     padding: 0;
+    background-color: #F2EEE7;
+    font-family: open-sans, sans-serif;
+    font-size: 62.5;
+    
 
 }
 
 
 /* header */
 
-.NomSite{
+.NomSite {
 
     display: flex;
     justify-content: center;
@@ -29,10 +33,63 @@ img {
 
 .logo {
 
-    width:  5vw;
+    width: 5vw;
     height: 10vh;
     margin: 8;
 }
 
+/* Body Acceuil */
+.Presentation {
 
-/*  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.Experience {
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: auto;
+}
+
+
+/* Footer */
+
+.Footer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3F3F3F;
+
+}
+
+
+/* PageDonnerProfile */
+
+h1 {
+
+    display: flex;
+    justify-content: center;
+    margin: 10rem;
+
+}
+
+.DonnerProfile {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5rem;
+    
+}
+
+.TableauClient {
+
+    display: flex;
+    justify-content: center;
+    margin: 5rem;
+
+}
