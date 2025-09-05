@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProfile } from "../Service/clientService.js";
+import { getProfileClient } from "../Service/clientService.js";
 import Figure from 'react-bootstrap/Figure';
 import { ListGroup } from "react-bootstrap";
 import NavBar from "../Component/Navbar.jsx";
@@ -20,17 +20,17 @@ const ProfileClientPage = () => {
 
     
     const id = param.idClient;
+    console.log(id);
+    
 
-
-    const fetchProfile = async (id) => {
-        console.log(id);
-        
+    const fetchProfileClient = async (id) => {
             
         try {
 
-            const profil = await getProfile(id)
-             console.log(profil);
+            const profil = await getProfileClient(id)
 
+            console.log(id);
+        
             setNom(profil.data.nom)
             setPrenom(profil.data.prenom)
             setAdresse(profil.data.adresse)
@@ -49,8 +49,8 @@ const ProfileClientPage = () => {
 
     useEffect(() => {
 
-        fetchProfile();
-        console.log("idClient: "+ param.idClient)
+        fetchProfileClient(id);
+        // console.log("idClient: "+ param.idClient)
 
 
     }, []);

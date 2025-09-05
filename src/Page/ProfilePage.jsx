@@ -5,17 +5,7 @@ import { Button, ListGroup } from "react-bootstrap";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../Component/Navbar.jsx";
-import {
-    Table,
-    TableHeader,
-    TableColumn,
-    TableBody,
-    TableRow,
-    TableCell,
-    Tooltip,
-    Chip,
-    User
-} from "@heroui/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Tooltip, Chip, User } from "@heroui/react";
 
 
 export const EyeIcon = (props) => {
@@ -232,7 +222,7 @@ const ProfilePage = () => {
 
 
         console.log(idClient);
-        
+
 
         navigate(`/Profile/${idClient}`)
 

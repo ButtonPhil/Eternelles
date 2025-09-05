@@ -28,6 +28,16 @@ export const clientList = () => API.get('/client', {
 
 });
 
+export const getProfileClient = (id) => API.get('/profile/:idClient', {
+
+    headers: {
+
+        Authorization: `${localStorage.getItem('token')}`
+
+    }
+
+});
+
 export const deleteClient = (idClient) => API.delete(`/deleteClient/${idClient}`, {
 
     headers: {
