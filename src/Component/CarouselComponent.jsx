@@ -27,7 +27,6 @@ function Carousel() {
     }
 
 
-
     return (
         <>
             <Carousel

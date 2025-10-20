@@ -7,10 +7,9 @@
     background-color: #F2EEE7;
     font-family: open-sans, sans-serif;
     font-size: 62.5;
-    
+
 
 }
-
 
 /* header */
 
@@ -20,7 +19,6 @@
     justify-content: center;
 
 }
-
 
 img {
 
@@ -62,10 +60,35 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3F3F3F;
+    background-color: #F2EEE7;
+    ;
 
 }
 
+.footerText nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 2rem;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.footerText nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+ul {
+    gap: 4rem;
+} 
 
 /* PageDonnerProfile */
 
@@ -83,7 +106,7 @@ h1 {
     flex-direction: row;
     justify-content: center;
     margin: 5rem;
-    
+
 }
 
 .TableauClient {

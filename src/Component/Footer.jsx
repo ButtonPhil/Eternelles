@@ -2,16 +2,14 @@ import React from "react";
 
 function Footer() {
     const navLinks = [
-        { name: "Features", href: "#" },
-        { name: "Solution", href: "#" },
+        { name: "Mention Legal", href: "#" },
         { name: "Customers", href: "#" },
         { name: "Pricing", href: "#" },
         { name: "Help", href: "#" },
-        { name: "About", href: "#" },
     ];
 
     const socialIcons = [
-    
+
         {
             name: "LinkedIn",
             href: "#",
@@ -67,7 +65,7 @@ function Footer() {
                 </svg>
             ),
         },
-        
+
         {
             name: "TikTok",
             href: "#",
@@ -100,20 +98,22 @@ function Footer() {
                 />
             </div>
 
-            <nav className="mb-6 w-full">
-                <ul className="flex flex-row justify-center gap-x-6 text-base font-medium overflow-x-auto">
-                    {navLinks.map((link) => (
-                        <li key={link.name}>
-                            <a
-                                href={link.href}
-                                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-gray-900 dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-                            >
-                                {link.name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <div className="footerText">
+                <nav className="mb-6 w-full">
+                    <ul>
+                        {navLinks.map((link) => (
+                            <li key={link.name}>
+                                <a
+                                    href={link.href}
+                                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-gray-900 dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                                >
+                                    {link.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav >
+            </div>
         </>
     )
 

@@ -134,47 +134,37 @@ export const EditIcon = (props) => {
 
 const ProfilePage = () => {
 
-    const [nom, setNom] = useState();
-    const [prenom, setPrenom] = useState();
-    const [adresse, setAdresse] = useState();
-    const [pays, setPays] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [image, setImage] = useState();
-    const navigate = useNavigate();
+    const [profile, setProfile] = useState({
+        nom: "",
+        prenom: "",
+        adresse: "",
+        pays: "",
+        email: "",
+    });
 
     const [client, setClient] = useState([]);
     const [admin, setAdmin] = useState(false);
 
     const token = localStorage.getItem('token');
 
-    const columns = [
-        { name: "ID", uid: "idClient" },
-        { name: "Nom", uid: "nom" },
-        { name: "Prénom", uid: "prenom" },
-        { name: "Adresse", uid: "adresse" },
-        { name: "Pays", uid: "pays" },
-        { name: "Email", uid: "email" },
-        { name: "Actions", uid: "actions" },
-    ];
-
-
-
+    // const columns = [
+    //     { name: "ID", uid: "idClient" },
+    //     { name: "Nom", uid: "nom" },
+    //     { name: "Prénom", uid: "prenom" },
+    //     { name: "Adresse", uid: "adresse" },
+    //     { name: "Pays", uid: "pays" },
+    //     { name: "Email", uid: "email" },
+    //     { name: "Actions", uid: "actions" },
+    // ];
 
     const fetchProfile = async (idClient) => {
 
         try {
 
-            const profil = await getProfile(idClient)
+            const response = await getProfile(idClient)
             // console.log(profil);
 
-            setNom(profil.data.nom)
-            setPrenom(profil.data.prenom)
-            setAdresse(profil.data.adresse)
-            setPays(profil.data.pays)
-            setEmail(profil.data.email)
-            setPassword(profil.data.password)
-            setImage(profil.data.imageClient)
+            setProfile(response.data)
 
         } catch (error) {
 
@@ -183,6 +173,32 @@ const ProfilePage = () => {
         }
 
     }
+
+    const handleInputChange = (field: string, value: string) => {
+        setProfile(prev => ({ ...prev, [field]: value }));
+    };
+
+      const handleSave = async () => {
+
+    const profileToSave = { ...profile, idClient };
+
+    try {
+      await usersService.updateInfoProfile(profileToSave);
+      toast({
+        title: "Profil mis à jour",
+        description: "Vos modifications ont été sauvegardées avec succès.",
+
+      });
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Impossible de sauvegarder vos modifications.",
+
+      });
+      console.error(error);
+    }
+  };
 
     const fetchList = async () => {
 
@@ -220,10 +236,7 @@ const ProfilePage = () => {
 
     const handleFicheClient = (idClient) => {
 
-
         console.log(idClient);
-
-
         navigate(`/Profile/${idClient}`)
 
     };
@@ -276,13 +289,9 @@ const ProfilePage = () => {
                         </Tooltip>
                     </div>
                 );
-            default:
-                return cellValue;
+            default: return cellValue;
         }
     };
-
-
-
 
     return (
 
@@ -299,35 +308,66 @@ const ProfilePage = () => {
 
             </div>
 
-            <div>
+            <div className="min-h-screen bg-background">
+                <header className="bg-card border-b border-border p-4">
+                    <div className="flex items-center space-x-4">
+                        <Link to="/dashboard">
+                            <Button variant="ghost" size="icon">
+                                <ArrowLeft className="h-5 w-5" />
+                            </Button>
+                        </Link>
+                        <h1 className="text-xl font-semibold">Modifier mon profil</h1>
+                    </div>
+                </header>
 
-                <h1>Votre Profil</h1>
+                <main className="max-w-2xl mx-auto p-4 space-y-6">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Informations personnelles</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <Label htmlFor="Nom">Nom</Label>
+                                    <Input
+                                        id="nom"
+                                        value={profile.nom}
+                                        onChange={(e) => handleInputChange("nom", e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <Label htmlFor="prenom">Prenom</Label>
+                                    <Input
+                                        id="prenom"
+                                        value={profile.prenom}
+                                        onChange={(e) => handleInputChange("prenom", e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <Label htmlFor="email">Email</Label>
+                                    <Input
+                                        id="email"
+                                        value={profile.email}
+                                        onChange={(e) => handleInputChange("email", e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <Label htmlFor="adresse">Adresse</Label>
+                                    <Input
+                                        id="adresse"
+                                        value={profile.adresse}
+                                        onChange={(e) => handleInputChange("adresse", e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
 
-            </div>
-
-            <div className="DonnerProfile">
-
-                <Figure>
-
-                    <Figure.Image
-                        width={171}
-                        height={180}
-                        alt="171x180"
-                        src={image}
-                    />
-
-                </Figure>
-
-                <ListGroup className="list-group-flush">
-
-                    <ListGroup.Item>{nom}</ListGroup.Item>
-                    <ListGroup.Item>{prenom}</ListGroup.Item>
-                    <ListGroup.Item>{adresse}</ListGroup.Item>
-                    <ListGroup.Item>{pays}</ListGroup.Item>
-                    <ListGroup.Item>{email}</ListGroup.Item>
-
-                </ListGroup>
-
+                    <Button onClick={handleSave} className="w-full">
+                        <Save className="h-4 w-4 mr-2" />
+                        Sauvegarder les modifications
+                    </Button>
+                </main>
             </div>
 
             {admin && (

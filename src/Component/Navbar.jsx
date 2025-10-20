@@ -51,7 +51,7 @@ const NavBar = () => {
                     {/* Logo et lien Accueil */}
                     <div className="d-flex align-items-center">
                         <img className="logo me-3" src="src/assets/logo.png" alt="Logo" style={{ height: "40px" }} />
-                        <Nav.Link onClick={() => { navigate('/Eternelles') }}>Accueil</Nav.Link>
+                        <Nav.Link onClick={() => { navigate('/') }}>Accueil</Nav.Link>
                     </div>
 
                     {/* Lien Galerie */}
