@@ -40,7 +40,7 @@ const NavBar = () => {
 
     useEffect(() => {
         setIsLoggedIn(checkToken());
-    }, [window.location.pathname]);
+    }, [window.location.pathname, openModalLogin]);
 
     return <>
 

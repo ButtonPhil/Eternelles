@@ -15,7 +15,7 @@ const GalleryPage = () => {
 
             const response = await getGallery();
             console.log(response);
-            setImage(response)
+            setImage(response.data.image)
 
 
         } catch (error) {
@@ -44,14 +44,14 @@ const GalleryPage = () => {
             </div>
 
             <ResponsiveMasonry
-                columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+                columnsCountBreakPoints={{ 750: 1, 750: 2, 900: 3 }}
             >
                 <Masonry>
                     {image.map((image, i) => (
                         <img
                             key={i}
-                            src={image}
-                            style={{ width: "100%", display: "block" }}
+                            src={'http://127.0.0.1:3000/gallery/'+image.image}
+                            style={{ width: "100%", height: "100%", display: "block" }}
                             alt=""
                         />
                     ))}

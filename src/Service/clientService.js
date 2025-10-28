@@ -13,7 +13,33 @@ export const getProfile = () => API.get('/profile', {
     }
 
 });
+export const updateInfoProfile = (data) => API.put('/updateInfoProfile', data, {
 
+    headers: {
+
+        Authorization: `${localStorage.getItem('token')}`
+
+    }
+
+});
+export const updatePassword = (data) => API.put('/updatePassword', data, {
+
+    headers: {
+
+        Authorization: `${localStorage.getItem('token')}`
+
+    }
+
+});
+export const updateMail = (data) => API.put('/updateMail', data, {
+
+    headers: {
+
+        Authorization: `${localStorage.getItem('token')}`
+
+    }
+
+});
 export const clientList = () => API.get('/client', {
 
     headers: {
@@ -23,7 +49,6 @@ export const clientList = () => API.get('/client', {
     }
 
 });
-
 export const getProfileClient = (id) => API.get(`/profile/${id}`, {
 
     headers: {
@@ -33,7 +58,6 @@ export const getProfileClient = (id) => API.get(`/profile/${id}`, {
     }
 
 });
-
 export const deleteClient = (idClient) => API.delete(`/deleteClient/${idClient}`, {
 
     headers: {

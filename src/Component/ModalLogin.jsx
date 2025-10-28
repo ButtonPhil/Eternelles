@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../Service/clientService.js';
-import { ToastContainer, toast } from 'react-toastify';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -33,12 +33,12 @@ function ModalLogin(props) {
                 progress: undefined,
                 theme: "light",
             });
-            navigate('/')
+            props.onHide()
             
         } catch (error) {
 
             toast.error('erreur connexion', {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: false,
