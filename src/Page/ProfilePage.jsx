@@ -129,9 +129,6 @@ export const EditIcon = (props) => {
     );
 };
 
-
-
-
 const ProfilePage = () => {
 
     const [profile, setProfile] = useState({
@@ -146,16 +143,8 @@ const ProfilePage = () => {
     const [admin, setAdmin] = useState(false);
 
     const token = localStorage.getItem('token');
-
-    // const columns = [
-    //     { name: "ID", uid: "idClient" },
-    //     { name: "Nom", uid: "nom" },
-    //     { name: "Prénom", uid: "prenom" },
-    //     { name: "Adresse", uid: "adresse" },
-    //     { name: "Pays", uid: "pays" },
-    //     { name: "Email", uid: "email" },
-    //     { name: "Actions", uid: "actions" },
-    // ];
+    const decodedToken = jwtDecode(token)
+    const idClient = decodedToken.id;
 
     const fetchProfile = async (idClient) => {
 
@@ -174,31 +163,45 @@ const ProfilePage = () => {
 
     }
 
-    const handleInputChange = (field: string, value: string) => {
+    const handleInputChange = (field, value) => {
         setProfile(prev => ({ ...prev, [field]: value }));
     };
 
-      const handleSave = async () => {
+    const handleSave = async () => {
 
-    const profileToSave = { ...profile, idClient };
+        const profileToSave = { ...profile, idClient };
 
-    try {
-      await usersService.updateInfoProfile(profileToSave);
-      toast({
-        title: "Profil mis à jour",
-        description: "Vos modifications ont été sauvegardées avec succès.",
+        try {
 
-      });
-      navigate("/");
-    } catch (error) {
-      toast({
-        title: "Erreur",
-        description: "Impossible de sauvegarder vos modifications.",
+            await usersService.updateInfoProfile(profileToSave);
+            toast.success("Profil mis à jour", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            navigate("/");
 
-      });
-      console.error(error);
-    }
-  };
+        } catch (error) {
+
+            toast.error('erreur, impossible de sauvegarder vos modifications', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            console.error(error);
+        }
+    };
 
     const fetchList = async () => {
 

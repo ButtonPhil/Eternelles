@@ -33,13 +33,24 @@ function ModalLogin(props) {
                 progress: undefined,
                 theme: "light",
             });
+            navigate('/')
             
         } catch (error) {
-            
+
+            toast.error('erreur connexion', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             console.error(error);
-            
+
         }
-        navigate('/')
 
     };
 

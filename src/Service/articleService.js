@@ -14,16 +14,9 @@ export const getType = () => API.get('/typeCategorie', {
 
 });
 
-export const getCarousel = () => API.getCarousel('/carouselImg', {
-
-    headers: {
-
-        Authorization: `${localStorage.getItem('token')}`
-
-    }
-})
+export const getGallery = () => API.get('/gallery');
 
 
 
 
-export default getType ;
+export default (getType, getGallery) ;

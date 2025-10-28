@@ -6,11 +6,7 @@ import EternellesPage from './Page/EternellesPage.jsx';
 import ProfilePage from './Page/ProfilePage.jsx';
 import ProfileClientPage from './Page/ProfileClientPage.jsx';
 // import AjoutArticlePage from './page/AjoutArticlePage.jsx';
-// import GaleriePage from './page/GaleriePage.jsx';
-
-
-
-
+import GalleryPage from './Page/GalleryPage.jsx'
 
 
 function app() {
@@ -23,7 +19,7 @@ function app() {
         <Routes>
 
           <Route path='/' element={< EternellesPage />} />
-          {/* <Route path='/Galerie' element={<GaleriePage />} /> */}
+          <Route path='/Galerie' element={<GalleryPage />} />
           <Route path='/Profile' element={<ProfilePage />} />
           <Route path='/Profile/:idClient' element={<ProfileClientPage />} />
           {/* <Route path='/AjoutArticle' element={<AjoutArticlePage />} /> */}
@@ -34,9 +30,6 @@ function app() {
 
     </>
   )
-
-
-
 
 }
 
